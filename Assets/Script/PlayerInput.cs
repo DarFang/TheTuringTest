@@ -1,0 +1,100 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.Mathematics;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class PlayerInput : MonoBehaviour
+{
+    [SerializeField] Camera camera;
+    [SerializeField] private float speed = 2f; 
+    [SerializeField] private float MouseSensitiviy = 50f;
+    [SerializeField] private Transform shootingPoint;
+    [SerializeField] private float speedMultiplier = 1.5f; 
+    [SerializeField] private float JumpForce = 10f;
+    [SerializeField] private float MaxFallSpeed = -10f;
+    [SerializeField] private LayerMask floorLayer;
+    [SerializeField] private Rigidbody projectile;
+    CharacterController controller;
+    private Vector2 aimDirection; 
+    private Vector2 moveDirection;
+    [SerializeField] Vector3 velocity;
+    const float gravityAceleration = -9.81f;
+    bool canLookWithMouse;
+
+    void Start()
+    {
+        controller = GetComponent<CharacterController>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+    }
+    void Update()
+    {
+        MovePlayer();
+        RotatePlayer();
+        Shoot();
+        Jump();
+        ApplyGravity();
+        //jump
+        //check if grounded
+    }
+    void Shoot()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            Rigidbody bulletInstantiated = Instantiate(projectile, shootingPoint.position, shootingPoint.rotation);
+            bulletInstantiated.AddForce(1f*camera.transform.forward, ForceMode.Impulse);
+            Destroy(bulletInstantiated.gameObject, 5f);
+        }
+    }
+    void Jump()
+    {
+        if(Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        {
+            velocity.y = JumpForce;
+        }
+    }
+    void ApplyGravity()
+    {
+        if(!IsGrounded()){
+            velocity.y += gravityAceleration *  Time.deltaTime;
+            if(velocity.y <MaxFallSpeed){
+                velocity.y = MaxFallSpeed;
+            }
+        }
+        else if (velocity.y <0)
+        {
+            velocity.y = 0;
+        }
+        controller.Move(velocity*Time.deltaTime);
+    }
+    void EnableMouseInput(){
+        canLookWithMouse = true;
+    }
+    void MovePlayer()
+    {
+        moveDirection.x = Input.GetAxisRaw("Horizontal");
+        moveDirection.y = Input.GetAxisRaw("Vertical");
+        float speedOutput = Input.GetKey(KeyCode.LeftShift)? speed*speedMultiplier: speed;
+        // Move player
+        controller.Move((transform.right* moveDirection.x + transform.forward*moveDirection.y) * Time.deltaTime * speedOutput);
+    }
+
+    private void RotatePlayer()
+    {
+        aimDirection.x = Input.GetAxisRaw("Mouse X");
+        aimDirection.y += -Input.GetAxisRaw("Mouse Y") * Time.deltaTime * MouseSensitiviy;
+
+        // Rotate player up down
+        aimDirection.y = Mathf.Clamp(aimDirection.y, -85f, 85f);
+        camera.transform.localEulerAngles = new Vector3(aimDirection.y, 0, 0);
+        //Rotate player on left right
+        transform.Rotate(Vector3.up, aimDirection.x * Time.deltaTime * MouseSensitiviy);
+    }
+    bool IsGrounded()
+    {
+        return Physics.CheckSphere(transform.position, 0.3f, floorLayer);
+    }
+}
+
