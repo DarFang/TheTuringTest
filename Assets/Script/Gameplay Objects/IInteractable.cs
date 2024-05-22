@@ -8,5 +8,5 @@ public interface IInteractable
 {
     public void OnHoverEnter();
     public void OnHoverExit();
-    public void Oninteract();
+    public void OnInteract(InteractModule module);
 } 

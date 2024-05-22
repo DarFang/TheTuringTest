@@ -26,10 +26,10 @@ public class DoorButton : MonoBehaviour, IInteractable
     public void OnHoverExit()
     {
         Debug.Log("exiting aiming the button");
-         objectRenderer.material.color = originalColor;
+        objectRenderer.material.color = originalColor;
     }
 
-    public void Oninteract()
+    public void OnInteract(InteractModule module)
     {
         Debug.Log("Interact with button");
         OnInteracted.Invoke();

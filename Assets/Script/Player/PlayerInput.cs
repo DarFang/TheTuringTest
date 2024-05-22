@@ -14,21 +14,17 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private float speed = 2f; 
     [SerializeField] private float MouseSensitivity = 50f;
     [SerializeField] Vector3 velocity;
-
-    [Header("Aiming")]
-    [SerializeField] private Rigidbody projectile;
-    [SerializeField] private Transform shootingPoint;
     [SerializeField] Camera camera;
 
-    [Header("Interactions")]
-    [SerializeField] private LayerMask interactableLayer;
+
+
 
     CharacterController controller;
     private Vector2 aimDirection; 
     private Vector2 moveDirection;
     const float gravityAcceleration = -9.81f;
     bool canLookWithMouse;
-    private IInteractable targetInteractable;
+
 
     void Start()
     {
@@ -41,43 +37,11 @@ public class PlayerInput : MonoBehaviour
     {
         MovePlayer();
         RotatePlayer();
-        Shoot();
         Jump();
         ApplyGravity();
-        Interact();
     }
-    void Interact()
-    {
-        Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width/2,Screen.height/2,0));
-        RaycastHit hit;
-        if(Physics.Raycast(ray, out hit, 4f, interactableLayer )){
-            if(targetInteractable == null){
-                targetInteractable = hit.collider.GetComponent<IInteractable>();
-                targetInteractable.OnHoverEnter();
-            }
-            else{
-                if(Input.GetKeyDown(KeyCode.E))
-                {
-                    targetInteractable.Oninteract();
-                    // Debug.DrawRay(ray.origin, ray.direction, Color.red, 3f );
-                }
-            }
-        }
-        else if(targetInteractable != null)
-        {
-            targetInteractable.OnHoverExit();
-            targetInteractable = null;
-        }
-    }
-    void Shoot()
-    {
-        if(Input.GetMouseButtonDown(0))
-        {
-            Rigidbody bulletInstantiated = Instantiate(projectile, shootingPoint.position, shootingPoint.rotation);
-            bulletInstantiated.AddForce(1f*camera.transform.forward, ForceMode.Impulse);
-            Destroy(bulletInstantiated.gameObject, 5f);
-        }
-    }
+    
+    
     void Jump()
     {
         if(Input.GetKeyDown(KeyCode.Space) && IsGrounded())
@@ -126,5 +90,6 @@ public class PlayerInput : MonoBehaviour
     {
         return Physics.CheckSphere(transform.position, 0.3f, floorLayer);
     }
+
 }
 
