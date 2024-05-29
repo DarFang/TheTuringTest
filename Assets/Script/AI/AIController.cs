@@ -6,28 +6,38 @@ public class AIController : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform[] target;
-    [SerializeField] private int wayPointIndex = 0;
+    
+    private AiState currentState;
 
     // Start is called before the first frame update
     void Start()
     {
-        agent.SetDestination(target[0].position);
+        currentState = new PatrolState(this);
+        currentState.OnStateEnter();   
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if(agent.remainingDistance < agent.stoppingDistance)
-        {
-            Debug.Log("new point");
-            wayPointIndex++;
-            if(wayPointIndex >= target.Length)
-            {
-                wayPointIndex = 0;
-            }
-
-            agent.SetDestination(target[wayPointIndex].position);
-        }
+       currentState.OnStateRun();   
     }
+    public void ChangeState(AiState state)
+    {
+        if(currentState !=null)
+        {
+            currentState.OnStateExit();
+        }
+        currentState = state;
+        currentState.OnStateEnter();
+    }
+    public NavMeshAgent GetAgent()
+    {
+        return agent;
+    }
+    public Transform[] getPath()
+    {
+        return target;
+    }
+
 }
