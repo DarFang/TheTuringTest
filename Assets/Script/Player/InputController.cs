@@ -12,6 +12,7 @@ public class InputController : MonoBehaviour
     [SerializeField] private MovementModule movementModule;
     [SerializeField] private JumpModule jumpModule;
     [SerializeField] private InteractModule interactModule;
+    [SerializeField] private CommandInteractor commandModule;
     // Start is called before the first frame update
     Vector3 moveDirection = Vector2.zero;
     Vector2 aimDirection = Vector2.zero;
@@ -46,6 +47,10 @@ public class InputController : MonoBehaviour
         if(jumpModule != null && Input.GetKeyDown(KeyCode.Space))
         {
             jumpModule.Jump();
+        }
+        if(commandModule != null && Input.GetMouseButtonDown(1))
+        {
+            commandModule.CreateCommand();
         }
     }
 }

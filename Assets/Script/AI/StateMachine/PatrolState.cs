@@ -30,7 +30,6 @@ public class PatrolState : AiState
             {
                 wayPointIndex = 0;
             }
-
             controller.GetAgent().SetDestination(controller.getPath()[wayPointIndex].position);
         }
     }
