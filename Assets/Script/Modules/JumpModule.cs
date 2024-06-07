@@ -42,7 +42,6 @@ public class JumpModule : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
     }
-
     private void Update()
     {
         ApplyGravity();

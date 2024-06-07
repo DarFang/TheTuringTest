@@ -27,8 +27,6 @@ public class Pickable : MonoBehaviour, IInteractable
         {
             Drop();
         }
-        
-
     }
 
     private void Pickup(InteractModule module)

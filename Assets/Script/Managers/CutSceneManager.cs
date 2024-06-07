@@ -26,7 +26,6 @@ public class CutSceneManager : MonoBehaviour
         Destroy(gameObject);
     }
 }
-
 public enum CutsceneStartType
 {
     OnLevelStart, OnLevelFinish

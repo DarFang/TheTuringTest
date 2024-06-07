@@ -17,7 +17,5 @@ public class ShootingModule : MonoBehaviour
         bulletInstantiated.rotation = shootingPoint.rotation;
         bulletInstantiated.AddForce(1f*camera.transform.forward, ForceMode.Impulse);
         tempPooled.ResetBackToPool(5f);
-        // Destroy(bulletInstantiated.gameObject, 5f);
-
     }
 }

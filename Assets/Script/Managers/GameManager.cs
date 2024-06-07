@@ -42,7 +42,6 @@ public class GameManager : MonoBehaviour
     }
     public void LockPlayerInput()
     {
-        Debug.Log("dsaf");
         player.enabled = false;
     }
     public void UnlockPlayerInput()

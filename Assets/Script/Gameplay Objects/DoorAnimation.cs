@@ -23,7 +23,6 @@ public class DoorAnimation : MonoBehaviour
             targetPosition = doorOriginalPosition + doorOpenOffset;
             
         }
-
         transform.position = Vector3.Lerp(transform.position, targetPosition, openingSpeed * Time.deltaTime);
     }
 
@@ -32,7 +31,6 @@ public class DoorAnimation : MonoBehaviour
     {
         isOpening = true;
     }
-
     public void CloseDoor()
     {
         isOpening = false;

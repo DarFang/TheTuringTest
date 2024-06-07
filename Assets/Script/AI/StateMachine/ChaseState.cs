@@ -9,17 +9,14 @@ public class ChaseState : AiState
     {
         this.targetToChase = target;
     }
-
     public override void OnStateEnter()
     {
         
     }
-
     public override void OnStateExit()
     {
         
     }
-
     public override void OnStateRun()
     {
         controller.GetAgent().SetDestination(targetToChase.position);

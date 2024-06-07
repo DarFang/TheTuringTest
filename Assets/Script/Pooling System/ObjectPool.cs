@@ -7,7 +7,6 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] private List<PooledObject> availableObjects = new List<PooledObject>();
     [SerializeField] private  PooledObject originalPrefab;
     [SerializeField] private int amountOfCopies;
-
     private void Awake() {
         for(int i = 0 ; i < amountOfCopies; i++)
         {

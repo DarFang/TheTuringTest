@@ -15,17 +15,10 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private float MouseSensitivity = 50f;
     [SerializeField] Vector3 velocity;
     [SerializeField] Camera camera;
-
-
-
-
     CharacterController controller;
     private Vector2 aimDirection; 
     private Vector2 moveDirection;
     const float gravityAcceleration = -9.81f;
-    bool canLookWithMouse;
-
-
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -40,8 +33,6 @@ public class PlayerInput : MonoBehaviour
         Jump();
         ApplyGravity();
     }
-    
-    
     void Jump()
     {
         if(Input.GetKeyDown(KeyCode.Space) && IsGrounded())
@@ -62,9 +53,6 @@ public class PlayerInput : MonoBehaviour
             velocity.y = 0;
         }
         controller.Move(velocity*Time.deltaTime);
-    }
-    void EnableMouseInput(){
-        canLookWithMouse = true;
     }
     void MovePlayer()
     {
@@ -90,6 +78,5 @@ public class PlayerInput : MonoBehaviour
     {
         return Physics.CheckSphere(transform.position, 0.3f, floorLayer);
     }
-
 }
 

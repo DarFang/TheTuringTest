@@ -19,7 +19,6 @@ public class MovementModule : MonoBehaviour
 
         controller.Move(((transform.right * moveDirection.x) + (transform.forward * moveDirection.z)) * Time.deltaTime * movementSpeed * tempMultiplier);
     }
-
     public void RotateCharacter(Vector3 direction)
     {
         aimDirection.x = direction.x;

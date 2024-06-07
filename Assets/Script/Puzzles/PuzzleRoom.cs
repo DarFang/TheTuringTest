@@ -19,7 +19,6 @@ public class PuzzleRoom : MonoBehaviour
         }
         isCurrentPuzzle = false;
     }
-
     public void ExitedAndFinishPuzzle()
     {
         
