@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 8464869475388370841}
   - component: {fileID: 7374475428910535195}
   - component: {fileID: 6240675741845712736}
+  - component: {fileID: 985302636835839908}
+  - component: {fileID: 6765223718208776779}
+  - component: {fileID: 2213624653917471857}
   m_Layer: 0
   m_Name: Corridoor_Door_Frame
   m_TagString: Untagged
@@ -25,14 +28,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4495396083094689930}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &7374475428910535195
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -84,3 +87,42 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &985302636835839908
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4495396083094689930}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0028919147, y: 0.021585865, z: 0.050778642}
+  m_Center: {x: -0.031418804, y: -0.0013482488, z: 0.025389317}
+--- !u!65 &6765223718208776779
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4495396083094689930}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0028919147, y: 0.021585865, z: 0.050778642}
+  m_Center: {x: 0.0314188, y: -0.0013482488, z: 0.025389317}
+--- !u!65 &2213624653917471857
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4495396083094689930}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0656745, y: 0.021585865, z: 0.0019297665}
+  m_Center: {x: 0, y: -0.0013482487, z: 0.03614913}

@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        StartLevel();
+        Invoke("StartLevel", Time.deltaTime);
     }
     public void StartLevel()
     {
