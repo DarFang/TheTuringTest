@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    private InputController player;
+    public UnityEvent OnLevelStart = new UnityEvent();
+    public UnityEvent OnAction = new UnityEvent();
+    public UnityEvent OnLevelEnds = new UnityEvent();
     public static GameManager Singleton{ get; private set; }
     private void Awake() {
         if(Singleton == null)
@@ -16,15 +21,32 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        StartLevel();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void StartLevel()
     {
-        
+        player = FindObjectOfType<InputController>();
+        //start cutscene
+        // start countdown
+        OnLevelStart?.Invoke();
+    }
+    public void FinishLevel()
+    {
+        OnLevelEnds?.Invoke();
+    }
+    public void PlayerDied()
+    {
+
+    }
+    public void LockPlayerInput()
+    {
+        Debug.Log("dsaf");
+        player.enabled = false;
+    }
+    public void UnlockPlayerInput()
+    {
+        player.enabled = true;
     }
 }

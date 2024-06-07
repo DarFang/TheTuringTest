@@ -21,31 +21,29 @@ public class Pickable : MonoBehaviour, IInteractable
     {
         if(transform.parent == null)
         {
-            rb.useGravity = false;
-            rb.isKinematic = true;
-            point = module.GetPickupTransform();
-            transform.position = point.position;
-            transform.rotation = point.rotation;
-            transform.SetParent(point);
+            Pickup(module);
         }
         else
         {
-            rb.useGravity = true;
-            rb.isKinematic = false;
-            transform.parent = null;
+            Drop();
         }
         
 
     }
 
-    private void Pickup()
+    private void Pickup(InteractModule module)
     {
-        // PlayerInput player = FindObjectOfType<PlayerInput>();
-        // joint = gameObject.AddComponent<FixedJoint>();
-        // joint.connectedBody = player.GetComponent<Rigidbody>();
+        rb.useGravity = false;
+        rb.isKinematic = true;
+        point = module.GetPickupTransform();
+        transform.position = point.position;
+        transform.rotation = point.rotation;
+        transform.SetParent(point);
     }
     private void Drop()
     {
-
+        rb.useGravity = true;
+        rb.isKinematic = false;
+        transform.parent = null;
     }
 }
