@@ -47,6 +47,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pickable Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 1221127867802892628, guid: 2f110fbd8d44a774bb00d66369e4e959,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1221127867802892633, guid: 2f110fbd8d44a774bb00d66369e4e959,
         type: 3}
       propertyPath: m_RootOrder
@@ -60,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 1221127867802892633, guid: 2f110fbd8d44a774bb00d66369e4e959,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 1221127867802892633, guid: 2f110fbd8d44a774bb00d66369e4e959,
         type: 3}
@@ -127,6 +132,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Buttons
+      objectReference: {fileID: 0}
+    - target: {fileID: 264812356574487795, guid: 536981409e5f4b64d84ba84452e23a15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 832501156121181467, guid: 536981409e5f4b64d84ba84452e23a15,
         type: 3}
@@ -374,6 +384,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pressure Pad
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982140483689041680, guid: 7386a3c80ad04d642878d800edf314b7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6982140483689041681, guid: 7386a3c80ad04d642878d800edf314b7,
         type: 3}
