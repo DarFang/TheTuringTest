@@ -16,7 +16,8 @@ public class InteractModule : MonoBehaviour
             targetInteractable.OnInteract(this);
         }
     }
-    private void Update() {
+    private void Update() 
+    {
         Interact();
     }
     void Interact()

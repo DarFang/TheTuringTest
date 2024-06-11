@@ -8,5 +8,4 @@ public abstract class AITurretState
     public abstract void OnStateEnter();
     public abstract void OnStateRun();
     public abstract void OnStateExit();
-    
 }

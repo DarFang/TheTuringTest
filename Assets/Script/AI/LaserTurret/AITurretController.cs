@@ -7,20 +7,17 @@ using UnityEngine.UIElements;
 public class AITurretController : MonoBehaviour
 {
     public AITurretState currentState {get; private set;}
+    public TurretVision turretVision{get; private set;}
+    [field: SerializeField] public float dmgPerSec {get; private set;} = 10f;
 
     void Start()
     {
         currentState = new IdleStateTurret(this);
         currentState.OnStateEnter();
-          
     }
-
-    // Update is called once per frame
     void Update()
     {
-
-        currentState.OnStateRun();
-        
+        currentState.OnStateRun();   
     }
     public void ChangeState(AITurretState state)
     {
@@ -31,5 +28,9 @@ public class AITurretController : MonoBehaviour
         }
         currentState = state;
         currentState.OnStateEnter();
+    }
+    public void LinkToTurretVision(TurretVision turretVision)
+    {
+        this.turretVision = turretVision;
     }
 }

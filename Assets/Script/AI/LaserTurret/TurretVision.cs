@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TurretVision : MonoBehaviour
 {
@@ -10,11 +11,16 @@ public class TurretVision : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private LayerMask OtherLayers;
     [SerializeField] LineRenderer lineRenderer;
-    [SerializeField] private float damagePerSec = 10f;
-    private bool hasSeenPlayer;
+    public UnityEvent OnTargetSeen;
+    public UnityEvent OnTargetLost;
+    public HealthModule health {get; private set;}
+    private void Awake() 
+    {
+        myController.LinkToTurretVision(this);    
+    }
     void Start()
     {
-        
+
     }
     void Update()
     {
@@ -22,27 +28,21 @@ public class TurretVision : MonoBehaviour
         if (Physics.Raycast(LaserStart.position,Vector3.forward, out hit, LaserRange, OtherLayers))
         {
             lineRenderer.SetPosition(1, hit.point);
-            hasSeenPlayer = false;
+            OnTargetLost?.Invoke();
+            health = null;
         }
         else if (Physics.Raycast(LaserStart.position, Vector3.forward, out hit, LaserRange, playerLayer))
         {
             lineRenderer.SetPosition(1, hit.point);
-            hasSeenPlayer = true;
+            health = hit.collider.gameObject.GetComponent<HealthModule>();
+            OnTargetSeen?.Invoke();   
         }
         else
         {
             lineRenderer.SetPosition(1, LaserStart.position + Vector3.forward * LaserRange);
-            hasSeenPlayer = false;
+            OnTargetLost?.Invoke();
+            health = null;
         }
         lineRenderer.SetPosition(0, LaserStart.position);
-        if(hasSeenPlayer && myController.currentState is IdleStateTurret)
-        {
-            HealthModule health = hit.collider.gameObject.GetComponent<HealthModule>();
-            myController.ChangeState(new AttackStateTurret(myController, health, damagePerSec));
-        }
-        else if(!hasSeenPlayer && myController.currentState is AttackStateTurret)
-        {
-            myController.ChangeState(new IdleStateTurret(myController));
-        }
     }
 }
