@@ -24,10 +24,10 @@ public class HealthModule : MonoBehaviour
     public void DeductHealth(float toDeduct)
     {
         currentHealth -= toDeduct;
-        OnHealthChanged.Invoke(currentHealth);
+        OnHealthChanged?.Invoke(currentHealth);
         if(currentHealth <=0)
         {
-            OnDie.Invoke();
+            OnDie?.Invoke();
         }
     }
 }
