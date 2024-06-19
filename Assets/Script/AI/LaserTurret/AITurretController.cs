@@ -21,7 +21,6 @@ public class AITurretController : MonoBehaviour
     }
     public void ChangeState(AITurretState state)
     {
-        Debug.Log("State changed");
         if(currentState !=null)
         {
             currentState.OnStateExit();

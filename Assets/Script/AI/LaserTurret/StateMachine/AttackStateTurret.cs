@@ -17,16 +17,14 @@ public class AttackStateTurret : AITurretState
     }
     public override void OnStateRun()
     {
-        Debug.Log("Attacking Player");
         healthModule.DeductHealth(controller.dmgPerSec*Time.deltaTime);        
     }
     public override void OnStateExit()
     {
         controller.turretVision.OnTargetLost.RemoveListener(NextState);
     }
-    private void NextState()
+    public override void NextState()
     {
-        Debug.Log("NextState to idle");
         controller.ChangeState(new IdleStateTurret(controller));
     }
 }

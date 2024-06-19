@@ -25,13 +25,13 @@ public class TurretVision : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(LaserStart.position,Vector3.forward, out hit, LaserRange, OtherLayers))
+        if (Physics.Raycast(LaserStart.position, LaserStart.transform.forward, out hit, LaserRange, OtherLayers))
         {
             lineRenderer.SetPosition(1, hit.point);
             OnTargetLost?.Invoke();
             health = null;
         }
-        else if (Physics.Raycast(LaserStart.position, Vector3.forward, out hit, LaserRange, playerLayer))
+        else if (Physics.Raycast(LaserStart.position, LaserStart.transform.forward, out hit, LaserRange, playerLayer))
         {
             lineRenderer.SetPosition(1, hit.point);
             health = hit.collider.gameObject.GetComponent<HealthModule>();
@@ -39,7 +39,7 @@ public class TurretVision : MonoBehaviour
         }
         else
         {
-            lineRenderer.SetPosition(1, LaserStart.position + Vector3.forward * LaserRange);
+            lineRenderer.SetPosition(1, LaserStart.position + LaserStart.transform.forward * LaserRange);
             OnTargetLost?.Invoke();
             health = null;
         }
