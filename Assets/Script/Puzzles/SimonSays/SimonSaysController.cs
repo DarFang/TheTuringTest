@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SimonSaysController : MonoBehaviour
 {
@@ -9,13 +10,14 @@ public class SimonSaysController : MonoBehaviour
     int currentIteration;
     int currentRound;
     int[] Sequence = {0,1,2,3};
-    void Start()
+    bool idleState = true;
+    void Awake()
     {
         for(int i = 0; i < buttons.Count; i++)
         {
             buttons[i].SetReturnValue(i, this);
         }
-        StartCoroutine(PlaySequence());
+        StartCoroutine(IdleCoroutine());
     }
 
     // Update is called once per frame
@@ -25,7 +27,12 @@ public class SimonSaysController : MonoBehaviour
     }
     public void PuzzleReset()
     {
-
+        idleState = false;
+        currentIteration = 0;
+        currentRound = 0;
+        GeneratePuzzleSeqence(4);
+        UnLightUpAllButtons();
+        StartCoroutine(PlaySequence());
     }
     public void GeneratePuzzleSeqence(int iterations)
     {
@@ -39,8 +46,8 @@ public class SimonSaysController : MonoBehaviour
     }
     public void OnButtonPressed(int value)
     {
-        Debug.Log(value);
-        Debug.Log(Sequence[currentIteration]);
+        Debug.Log("input value: "+ value);
+        Debug.Log("correct value: "+Sequence[currentIteration]);
         if(Sequence[currentIteration] == value)
         {
             if(currentIteration == currentRound)
@@ -50,7 +57,9 @@ public class SimonSaysController : MonoBehaviour
                 currentRound ++;
                 if(currentRound == Sequence.Length)
                 {
-                    Debug.Log("youwin");
+                    LightUpAllButtons();
+                    idleState = true;
+                    StartCoroutine(IdleCoroutine());
                 }
                 else
                 {
@@ -65,10 +74,8 @@ public class SimonSaysController : MonoBehaviour
         }
         else
         {
-            currentIteration = 0;
-            currentRound = 0;
-            StartCoroutine(PlaySequence());
             Debug.Log("youlose");
+            PuzzleReset();
         }
     }
     public void DisableButtonInput()
@@ -87,13 +94,52 @@ public class SimonSaysController : MonoBehaviour
     }
     IEnumerator PlaySequence()
     {
+        DisableButtonInput();
         yield return new WaitForSeconds(1f);
         for (int i = 0; i < currentRound+1; i++)
         {
             //play sound
             Debug.Log("number:" + Sequence[i]);
-            buttons[Sequence[i]].DisplayLightup();
+            buttons[Sequence[i]].ButtonBlink();
             yield return new WaitForSeconds(1f);
+        }
+        EnableButtonInput();
+    }
+    public void UnLightUpAllButtons()
+    {
+        foreach (SimonSaysButton button in buttons)
+        {
+            button.UnlightUpColor();
+        }
+    }
+    
+    public void LightUpAllButtons()
+    {
+        foreach (SimonSaysButton button in buttons)
+        {
+            button.LightUpColor();
+        }
+    }
+    public void RandomiseLightupButtons()
+    {
+        foreach (SimonSaysButton button in buttons)
+        {
+            if(Random.Range(0, 2) == 0)
+            {
+                button.LightUpColor();
+            } 
+            else{
+                button.UnlightUpColor();
+            }    
+        }
+    }
+    IEnumerator IdleCoroutine()
+    {
+        yield return new WaitForSeconds(1);
+        while (idleState)
+        {
+            RandomiseLightupButtons();
+            yield return new WaitForSeconds(1);
         }
     }
 }
