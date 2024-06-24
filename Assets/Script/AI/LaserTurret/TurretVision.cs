@@ -28,20 +28,29 @@ public class TurretVision : MonoBehaviour
         if (Physics.Raycast(LaserStart.position, LaserStart.transform.forward, out hit, LaserRange, OtherLayers))
         {
             lineRenderer.SetPosition(1, hit.point);
-            OnTargetLost?.Invoke();
-            health = null;
+            if(health != null)
+            {
+                OnTargetLost?.Invoke();
+                health = null;
+            }
         }
         else if (Physics.Raycast(LaserStart.position, LaserStart.transform.forward, out hit, LaserRange, playerLayer))
         {
             lineRenderer.SetPosition(1, hit.point);
-            health = hit.collider.gameObject.GetComponent<HealthModule>();
-            OnTargetSeen?.Invoke();   
+            if(health == null)
+            {
+                health = hit.collider.gameObject.GetComponent<HealthModule>();
+                OnTargetSeen?.Invoke();   
+            }
         }
         else
         {
             lineRenderer.SetPosition(1, LaserStart.position + LaserStart.transform.forward * LaserRange);
-            OnTargetLost?.Invoke();
-            health = null;
+             if(health != null)
+            {
+                OnTargetLost?.Invoke();
+                health = null;
+            }
         }
         lineRenderer.SetPosition(0, LaserStart.position);
     }

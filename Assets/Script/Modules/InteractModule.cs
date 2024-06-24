@@ -28,7 +28,10 @@ public class InteractModule : MonoBehaviour
         {
             if(targetInteractable == null){
                 targetInteractable = hit.collider.GetComponent<IInteractable>();
-                targetInteractable.OnHoverEnter();
+                if(targetInteractable != null)
+                {
+                    targetInteractable.OnHoverEnter();
+                }
             }
         }
         else if(targetInteractable != null)
