@@ -39,6 +39,7 @@ public class SimonSaysButton : MonoBehaviour, IInteractable
         if(!canInteract) return;
         controller.OnButtonPressed(value);
         ButtonBlink();
+        SoundManager.Instance.PlayButtonSound(transform.position);
     }
 
     public void SetReturnValue(int value, SimonSaysController controller)

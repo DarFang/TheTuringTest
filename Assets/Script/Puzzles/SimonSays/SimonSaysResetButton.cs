@@ -28,5 +28,7 @@ public class SimonSaysResetButton : MonoBehaviour, IInteractable
     public void OnInteract(InteractModule module)
     {
         ButtonPressed?.Invoke();
+        SoundManager.Instance.PlayButtonSound(transform.position);
+
     }
 }

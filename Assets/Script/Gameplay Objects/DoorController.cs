@@ -8,10 +8,12 @@ public class DoorController : MonoBehaviour
     public void OpenDoor()
     {
         animator.SetBool("DoorOpen", true);
+        SoundManager.Instance.PlayDoorSound(transform.position);
     }
     public void CloseDoor()
     {
         animator.SetBool("DoorOpen", false);
+        SoundManager.Instance.PlayDoorSound(transform.position);
     }
     private void OnTriggerEnter(Collider other) 
     {

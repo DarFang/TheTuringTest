@@ -37,9 +37,11 @@ public class Pickable : MonoBehaviour, IInteractable
         transform.position = point.position;
         transform.rotation = point.rotation;
         transform.SetParent(point);
+        SoundManager.Instance.PlayPickup(transform.position);
     }
     private void Drop()
     {
+        SoundManager.Instance.PlayPickup(transform.position, 1);
         rb.useGravity = true;
         rb.isKinematic = false;
         transform.parent = null;

@@ -10,7 +10,7 @@ public class DoorKey : MonoBehaviour
     private void OnTriggerEnter(Collider other) 
     {
         OnKeyPickedUp?.Invoke();
-        Debug.Log("KeyPickedup");
+        SoundManager.Instance.PlayPickup(transform.position);
         Destroy(gameObject);
     }
 }

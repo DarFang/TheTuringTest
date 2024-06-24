@@ -272,7 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
   mouseSensitivity: 200
-  shootingModule: {fileID: 1972004469787072140}
+  shootingModule: {fileID: 0}
   movementModule: {fileID: 2103804264}
   jumpModule: {fileID: 2103804265}
   interactModule: {fileID: 1972004469787072139}

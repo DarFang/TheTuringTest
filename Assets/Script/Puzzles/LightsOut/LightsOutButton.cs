@@ -39,6 +39,8 @@ public class LightsOutButton :  MonoBehaviour, IInteractable
 
         FlipLight();
         controller.toggleAdjacentValues(myPosition);
+        SoundManager.Instance.PlayButtonSound(transform.position);
+
         
     }
     public void Disable()
