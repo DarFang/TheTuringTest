@@ -9,7 +9,6 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioClip ButtonSound;
     [SerializeField] AudioClip DoorSound;
     [SerializeField] AudioClip TaskComplete;
-    AudioSource audioSource;
 
     private void Awake()
     {
@@ -19,7 +18,6 @@ public class SoundManager : MonoBehaviour
             Instance = this;
             transform.parent = null;
             DontDestroyOnLoad(gameObject);
-            audioSource = GetComponent<AudioSource>();
         }
         else
         {
