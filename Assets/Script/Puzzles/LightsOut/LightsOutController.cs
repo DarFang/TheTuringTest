@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LightsOutController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class LightsOutController : MonoBehaviour
     [SerializeField] LightsOutButton lightsOutButton;
     Dictionary<Vector2Int, LightsOutButton> buttons = new Dictionary<Vector2Int, LightsOutButton>();
     Vector2Int[] AdjacentTiles = {Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right}; 
+    public UnityEvent OnUnlock = new UnityEvent();
     void Start()
     {
         for (int x = 0; x < size.x; x++)
@@ -17,7 +19,7 @@ public class LightsOutController : MonoBehaviour
             for (int y = 0; y < size.y; y++)
             {
                 LightsOutButton buttonInstance = Instantiate(lightsOutButton, StartPosition);
-                buttonInstance.transform.position = new Vector3(x*offSet,0 , y*offSet) + StartPosition.position;
+                buttonInstance.transform.localPosition = new Vector3(x*offSet,0 , y*offSet);
                 Vector2Int pos = new Vector2Int(x, y);
                 buttonInstance.SetPosition(pos, this);
                 buttons.Add(pos, buttonInstance);
@@ -54,7 +56,7 @@ public class LightsOutController : MonoBehaviour
         {
             if(button.Value.Value == true) return false;
         }
-        Debug.Log("solved");
+        OnUnlock?.Invoke();
         return true;
     }
 }

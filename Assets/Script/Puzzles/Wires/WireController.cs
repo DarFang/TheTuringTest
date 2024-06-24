@@ -32,8 +32,9 @@ public class WireController : MonoBehaviour
         }
     }
 
-    private void RandomizeWires()
+    public void RandomizeWires()
     {
+        correctWireSequence = new List<WireNode>();
         List<WireNode> tempEndWires = new List<WireNode>(endWires);
         while(tempEndWires.Count > 0)
         {

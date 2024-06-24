@@ -23,14 +23,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2434826850997998432}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.414, y: 0.648, z: -0.413}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4578811989395055365}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &4578811989395055367
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,6 +83,9 @@ MonoBehaviour:
   StartPosition: {fileID: 6488100942558704144}
   lightsOutButton: {fileID: 6341856666379437823, guid: 21c514bc6ef979947a2aff8d5858b835,
     type: 3}
+  OnUnlock:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4578811989443167552
 GameObject:
   m_ObjectHideFlags: 0
