@@ -13,6 +13,7 @@ public class SimonSaysController : MonoBehaviour
     int[] Sequence = {0,1,2,3};
     bool idleState = true;
     public UnityEvent OnUnlock = new UnityEvent();
+    [SerializeField] ButtonDisplay buttonDisplay;
     void Awake()
     {
         for(int i = 0; i < buttons.Count; i++)
@@ -59,6 +60,8 @@ public class SimonSaysController : MonoBehaviour
                     LightUpAllButtons();
                     idleState = true;
                     StartCoroutine(IdleCoroutine());
+                    buttonDisplay?.ChangeText("Unlocked");
+                    buttonDisplay?.ChangeColor(Color.green);
                     OnUnlock?.Invoke();
                 }
                 else
@@ -78,6 +81,7 @@ public class SimonSaysController : MonoBehaviour
     }
     public void DisableButtonInput()
     {
+        buttonDisplay?.ChangeText("Listen");
         foreach (SimonSaysButton button in buttons)
         {
             button.Disable();
@@ -85,6 +89,7 @@ public class SimonSaysController : MonoBehaviour
     }
     public void EnableButtonInput()
     {
+        buttonDisplay?.ChangeText("Your Turn");
         foreach (SimonSaysButton button in buttons)
         {
             button.Enable();

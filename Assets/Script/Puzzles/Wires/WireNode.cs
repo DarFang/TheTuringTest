@@ -9,6 +9,7 @@ public class WireNode : MonoBehaviour, IInteractable
     public WireNode connectedTo {get; private set;} = null;
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] Renderer renderer;
+    [SerializeField] Vector3 offset = Vector3.zero;
     public void OnHoverEnter()
     {
         
@@ -38,7 +39,7 @@ public class WireNode : MonoBehaviour, IInteractable
         else
         {
             lineRenderer.positionCount = 2;
-            lineRenderer.SetPosition(0, transform.position);
+            lineRenderer.SetPosition(0, transform.position + offset);
             lineRenderer.SetPosition(1, endPos);
         }
     }

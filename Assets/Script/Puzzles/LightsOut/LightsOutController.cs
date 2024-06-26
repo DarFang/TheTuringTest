@@ -12,6 +12,7 @@ public class LightsOutController : MonoBehaviour
     Dictionary<Vector2Int, LightsOutButton> buttons = new Dictionary<Vector2Int, LightsOutButton>();
     Vector2Int[] AdjacentTiles = {Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right}; 
     public UnityEvent OnUnlock = new UnityEvent();
+    [SerializeField] ButtonDisplay buttonDisplay;
     void Start()
     {
         for (int x = 0; x < size.x; x++)
@@ -26,6 +27,8 @@ public class LightsOutController : MonoBehaviour
             }
         }
         RandomiseLightupButtons();
+        buttonDisplay?.ChangeColor(Color.red);
+        buttonDisplay?.ChangeText("Locked");
     }
     void Update()
     {
@@ -57,6 +60,8 @@ public class LightsOutController : MonoBehaviour
             if(button.Value.Value == true) return false;
         }
         OnUnlock?.Invoke();
+        buttonDisplay?.ChangeText("Unlocked");
+        buttonDisplay?.ChangeColor(Color.green);
         return true;
     }
 }

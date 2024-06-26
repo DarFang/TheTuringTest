@@ -12,6 +12,7 @@ public class WireController : MonoBehaviour
     WireNode currentWireNode = null;
     SeeingModule module;
     public UnityEvent OnUnlock = new UnityEvent();
+    [SerializeField] ButtonDisplay buttonDisplay;
     
     void Start()
     {
@@ -63,7 +64,9 @@ public class WireController : MonoBehaviour
             {
                 return false;
             }
-        }  
+        }
+        buttonDisplay?.ChangeText("Unlocked");
+        buttonDisplay?.ChangeColor(Color.green);
         OnUnlock?.Invoke();
         return true;
     }
