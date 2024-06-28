@@ -7,6 +7,7 @@ public class VoiceClip : MonoBehaviour
     
     public static VoiceClip Instance;
     [SerializeField] AudioClip[] VoiceClips;
+    [SerializeField] bool isDebugging = false;
     AudioSource audioSource;
 
     private void Awake()
@@ -27,7 +28,10 @@ public class VoiceClip : MonoBehaviour
 
     public void PlayVoice(int index = 0)
     {
-        PlaySound(index);
+        if(!isDebugging)
+        {
+            PlaySound(index);
+        }
     }
     private void PlaySound(int index)
     {

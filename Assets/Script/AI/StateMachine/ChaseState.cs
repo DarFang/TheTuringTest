@@ -24,6 +24,7 @@ public class ChaseState : AiState
          if(controller.GetAgent().remainingDistance < controller.GetAgent().stoppingDistance)
         {
             //change state to attack
+            Debug.Log("reached");
         }
     }
 }

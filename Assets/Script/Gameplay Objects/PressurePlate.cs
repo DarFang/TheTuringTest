@@ -12,14 +12,14 @@ public class PressurePlate : MonoBehaviour
     {
         if(other.attachedRigidbody ==  corretRigidbody)
         {
-            OnActivation.Invoke();
+            OnActivation?.Invoke();
         }
     }
     private void OnTriggerExit(Collider other) 
     {
         if(other.attachedRigidbody ==  corretRigidbody)
         {
-            OnDeactivation.Invoke();
+            OnDeactivation?.Invoke();
         }
     }
 }

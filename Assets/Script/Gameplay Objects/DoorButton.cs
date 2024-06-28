@@ -29,7 +29,7 @@ public class DoorButton : MonoBehaviour, IInteractable
 
     public void OnInteract(InteractModule module)
     {
-        OnInteracted.Invoke();
+        OnInteracted?.Invoke();
         SoundManager.Instance.PlayButtonSound(transform.position);
     }
 

@@ -37,6 +37,7 @@ public class TurretVision : MonoBehaviour
         else if (Physics.Raycast(LaserStart.position, LaserStart.transform.forward, out hit, LaserRange, playerLayer))
         {
             lineRenderer.SetPosition(1, hit.point);
+            Debug.Log("hitplayer");
             if(health == null)
             {
                 health = hit.collider.gameObject.GetComponent<HealthModule>();
