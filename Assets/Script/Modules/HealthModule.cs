@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public class HealthModule : MonoBehaviour
 {
     [SerializeField] private float _maxHealth;
     public Action<float> OnHealthChanged; 
-    public Action OnDie; 
+    public UnityEvent OnDie; 
     private float currentHealth;
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class HealthModule : MonoBehaviour
         OnHealthChanged?.Invoke(currentHealth);
         if(currentHealth <=0)
         {
+            currentHealth = _maxHealth;
             OnDie?.Invoke();
         }
     }
