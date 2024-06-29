@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioClip ButtonSound;
     [SerializeField] AudioClip DoorSound;
     [SerializeField] AudioClip TaskComplete;
+    [SerializeField] AudioClip[] MusicKeys;
 
     private void Awake()
     {
@@ -28,6 +29,10 @@ public class SoundManager : MonoBehaviour
     public void PlayPickup(Vector3 pos, int index = 0)
     {
         PlaySound(PickupSound[index], pos);
+    }
+    public void PlayMusicKey(Vector3 pos, int index = 0)
+    {
+        PlaySound(MusicKeys[index], pos);
     }
     public void PlayButtonSound(Vector3 pos)
     {

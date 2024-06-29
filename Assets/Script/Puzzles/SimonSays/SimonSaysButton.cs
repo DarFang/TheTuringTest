@@ -61,9 +61,10 @@ public class SimonSaysButton : MonoBehaviour, IInteractable
     }
     private IEnumerator BlinkButtonCoroutine()
     {
-        objectRenderer.material.color = highlightColor;
+        LightUpColor();
+        SoundManager.Instance.PlayMusicKey(transform.position, value);
         yield return new WaitForSeconds(lightUpDuration);
-        objectRenderer.material.color = defaultColor;
+        UnlightUpColor();
     }
     public void LightUpColor ()
     {

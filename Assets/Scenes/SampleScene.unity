@@ -1103,6 +1103,11 @@ MonoBehaviour:
   ButtonSound: {fileID: 8300000, guid: 245965889d0a183438ef3478b27122c0, type: 3}
   DoorSound: {fileID: 8300000, guid: 0729c0ffa9d852743aaef9d7df5bfb36, type: 3}
   TaskComplete: {fileID: 8300000, guid: 7478151cf36724a7dada558f746c3633, type: 3}
+  MusicKeys:
+  - {fileID: 8300000, guid: 3274e8a928ffc284691893f2569f6125, type: 3}
+  - {fileID: 8300000, guid: 6cb414cd9aae36a488cdc377d793a8d2, type: 3}
+  - {fileID: 8300000, guid: 18bc08fa97b4690419111357c6af1fac, type: 3}
+  - {fileID: 8300000, guid: 96dd3ea51bdabfd46b828dbfbbe8d6d2, type: 3}
 --- !u!4 &1106079245
 Transform:
   m_ObjectHideFlags: 0
