@@ -9,7 +9,8 @@ public class HandleDeath : MonoBehaviour
     public void OnDeath()
     {
         playerInput.gameObject.SetActive(false);
-         Respawn();
+        Respawn();
+        GameManager.Singleton.PlayerDied();
     }
     public void Respawn()
     {

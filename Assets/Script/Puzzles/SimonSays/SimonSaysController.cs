@@ -14,6 +14,7 @@ public class SimonSaysController : MonoBehaviour
     bool idleState = true;
     public UnityEvent OnUnlock = new UnityEvent();
     [SerializeField] ButtonDisplay buttonDisplay;
+    [SerializeField] int totalSequences = 4;
     void Awake()
     {
         for(int i = 0; i < buttons.Count; i++)
@@ -32,7 +33,7 @@ public class SimonSaysController : MonoBehaviour
         idleState = false;
         currentIteration = 0;
         currentRound = 0;
-        GeneratePuzzleSeqence(4);
+        GeneratePuzzleSeqence(totalSequences);
         UnLightUpAllButtons();
         StartCoroutine(PlaySequence());
     }

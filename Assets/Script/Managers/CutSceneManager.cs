@@ -11,7 +11,15 @@ public class CutSceneManager : MonoBehaviour
     void Start()
     {
         //switch
-        GameManager.Singleton.OnLevelStart.AddListener(StartCutScene);
+        switch (startType)
+        {
+            case CutsceneStartType.OnLevelStart:GameManager.Singleton.OnLevelStart.AddListener(StartCutScene);
+            break;
+            case CutsceneStartType.OnLevelFinish:GameManager.Singleton.OnLevelEnds.AddListener(StartEndScene);
+            break;
+            default:
+            break;
+        }
     }
 
     public void StartCutScene()
@@ -19,11 +27,19 @@ public class CutSceneManager : MonoBehaviour
         GameManager.Singleton.LockPlayerInput();
         director.Play();
     }
-    public void OnCutSceneEnd()
+    public void OnStartCutSceneEnd()
     {
         GameManager.Singleton.UnlockPlayerInput();
         GameManager.Singleton.OnLevelStart.RemoveListener(StartCutScene);
-        Destroy(gameObject);
+    }
+    public void StartEndScene()
+    {
+        Debug.Log("play end");
+        director.Play();
+    }
+    public void OnEndCutSceneEnd()
+    {
+        GameManager.Singleton.OnLevelEnds.RemoveListener(StartEndScene);
     }
 }
 public enum CutsceneStartType

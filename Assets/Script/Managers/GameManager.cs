@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public UnityEvent OnLevelStart = new UnityEvent();
     public UnityEvent OnAction = new UnityEvent();
     public UnityEvent OnLevelEnds = new UnityEvent();
+    public UnityEvent OnPlayerDied = new UnityEvent();
     public static GameManager Singleton{ get; private set; }
     private void Awake() {
         if(Singleton == null)
@@ -34,11 +35,12 @@ public class GameManager : MonoBehaviour
     }
     public void FinishLevel()
     {
+        Debug.Log("game manager finish");
         OnLevelEnds?.Invoke();
     }
     public void PlayerDied()
     {
-
+        OnPlayerDied?.Invoke();
     }
     public void LockPlayerInput()
     {

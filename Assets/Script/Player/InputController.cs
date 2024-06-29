@@ -38,6 +38,10 @@ public class InputController : MonoBehaviour
         {
             interactModule.InteractWithObject();
         }
+        else if(interactModule != null && Input.GetMouseButtonDown(0))
+        {
+            interactModule.InteractWithObject();
+        }
         if(movementModule != null)
         {
             movementModule.MoveCharacter(moveDirection);

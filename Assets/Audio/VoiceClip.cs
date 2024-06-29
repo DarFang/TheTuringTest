@@ -36,6 +36,7 @@ public class VoiceClip : MonoBehaviour
     private void PlaySound(int index)
     {
         audioSource.Stop();
+        if(index > VoiceClips.Length)return;
         audioSource.clip = VoiceClips[index];
         audioSource.Play();
     }

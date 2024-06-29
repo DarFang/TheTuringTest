@@ -39,7 +39,6 @@ public class SimonSaysButton : MonoBehaviour, IInteractable
         if(!canInteract) return;
         controller.OnButtonPressed(value);
         ButtonBlink();
-        SoundManager.Instance.PlayButtonSound(transform.position);
     }
 
     public void SetReturnValue(int value, SimonSaysController controller)
@@ -61,8 +60,8 @@ public class SimonSaysButton : MonoBehaviour, IInteractable
     }
     private IEnumerator BlinkButtonCoroutine()
     {
+        SoundManager.Instance.PlayMusicKey(transform.position + new Vector3(0,0,2f), value);
         LightUpColor();
-        SoundManager.Instance.PlayMusicKey(transform.position, value);
         yield return new WaitForSeconds(lightUpDuration);
         UnlightUpColor();
     }
