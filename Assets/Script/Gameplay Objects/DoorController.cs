@@ -15,12 +15,4 @@ public class DoorController : MonoBehaviour
         animator.SetBool("DoorOpen", false);
         SoundManager.Instance.PlayDoorSound(transform.position);
     }
-    private void OnTriggerEnter(Collider other) 
-    {
-        // animator.SetBool("DoorOpen", true);
-    }
-    private void OnTriggerExit(Collider other) 
-    {
-        // animator.SetBool("DoorOpen", false);
-    }
 }

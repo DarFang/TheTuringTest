@@ -67,7 +67,6 @@ public class PlayerInput : MonoBehaviour
     {
         aimDirection.x = Input.GetAxisRaw("Mouse X");
         aimDirection.y += -Input.GetAxisRaw("Mouse Y") * Time.deltaTime * MouseSensitivity;
-
         // Rotate player up down
         aimDirection.y = Mathf.Clamp(aimDirection.y, -85f, 85f);
         camera.transform.localEulerAngles = new Vector3(aimDirection.y, 0, 0);

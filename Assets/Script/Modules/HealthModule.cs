@@ -11,16 +11,9 @@ public class HealthModule : MonoBehaviour
     public Action<float> OnHealthChanged; 
     public UnityEvent OnDie; 
     private float currentHealth;
-    // Start is called before the first frame update
     void Start()
     {
         currentHealth = _maxHealth;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     public void DeductHealth(float toDeduct)
     {

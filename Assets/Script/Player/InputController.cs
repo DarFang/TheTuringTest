@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-     [SerializeField] private Camera camera;
+    [SerializeField] private Camera camera;
     [SerializeField] private float mouseSensitivity = 50f;
     [Header("Modules")]
     [SerializeField] private ShootingModule shootingModule;
@@ -13,7 +13,6 @@ public class InputController : MonoBehaviour
     [SerializeField] private JumpModule jumpModule;
     [SerializeField] private InteractModule interactModule;
     [SerializeField] private CommandInteractor commandModule;
-    // Start is called before the first frame update
     Vector3 moveDirection = Vector2.zero;
     Vector2 aimDirection = Vector2.zero;
     void Start()

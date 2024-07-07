@@ -19,9 +19,11 @@ public class PuzzleRoomManager : MonoBehaviour
         {
             if(room.gameObject.activeInHierarchy)
             {
+                Debug.Log("not finished");
                return false; 
             }
         }
+        Debug.Log("finished");
         return true;
     }
 }

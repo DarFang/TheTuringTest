@@ -6,13 +6,14 @@ using UnityEngine.Events;
 
 public class WireController : MonoBehaviour
 {
+    [Header("Interactions")]
+    public UnityEvent OnUnlock = new UnityEvent();
     [SerializeField] List<EndWireNode> endWires= new List<EndWireNode>();
     [SerializeField] List<StartWireNode> startWires= new List<StartWireNode>();
+    [SerializeField] ButtonDisplay buttonDisplay;
     List<WireNode> correctWireSequence = new List<WireNode>();
     WireNode currentWireNode = null;
     SeeingModule module;
-    public UnityEvent OnUnlock = new UnityEvent();
-    [SerializeField] ButtonDisplay buttonDisplay;
     
     void Start()
     {

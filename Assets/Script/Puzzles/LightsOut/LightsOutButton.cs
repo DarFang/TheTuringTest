@@ -5,15 +5,17 @@ using UnityEngine.Events;
 
 public class LightsOutButton :  MonoBehaviour, IInteractable
 {
+    [Header("Interaction")]
+    [SerializeField] private UnityEvent OnInteracted; 
     public bool Value{get; private set;}
-    LightsOutController controller;
+    [Header("Indicator")]
     private Color defaultColor;
-    [SerializeField] private UnityEvent OnInteracted;
     [SerializeField] private Color highlightColor;
     private Renderer objectRenderer;
-    private bool canInteract = true;
     [SerializeField] float lightenAmount = 0.2f;
+    private bool canInteract = true;
     Vector2Int myPosition;
+    LightsOutController controller;
     private void Awake() 
     {
         objectRenderer = GetComponent<Renderer>();

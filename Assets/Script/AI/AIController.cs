@@ -8,15 +8,11 @@ public class AIController : MonoBehaviour
     [SerializeField] private Transform[] target;
     
     private AiState currentState;
-
-    // Start is called before the first frame update
     void Start()
     {
         currentState = new PatrolState(this);
         currentState.OnStateEnter();   
     }
-
-    // Update is called once per frame
     void Update()
     {
 

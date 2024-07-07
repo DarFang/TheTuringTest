@@ -5,22 +5,18 @@ using UnityEngine.Events;
 
 public class TurretVision : MonoBehaviour
 {
+    public UnityEvent OnTargetSeen;
+    public UnityEvent OnTargetLost;
+    public HealthModule health {get; private set;}
     [SerializeField] private AITurretController myController;
     [SerializeField] private Transform LaserStart;
     [SerializeField] private float LaserRange = 2f;
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private LayerMask OtherLayers;
-    [SerializeField] LineRenderer lineRenderer;
-    public UnityEvent OnTargetSeen;
-    public UnityEvent OnTargetLost;
-    public HealthModule health {get; private set;}
+    [SerializeField] private LineRenderer lineRenderer;
     private void Awake() 
     {
         myController.LinkToTurretVision(this);    
-    }
-    void Start()
-    {
-
     }
     void Update()
     {

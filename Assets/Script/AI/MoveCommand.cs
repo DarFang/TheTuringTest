@@ -16,7 +16,6 @@ public class MoveCommand : Command
             arrivedAtDestination= true;
         }
     }
-
     public override bool IsCompleted()
     {
         return arrivedAtDestination;

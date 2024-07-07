@@ -6,15 +6,16 @@ using UnityEngine.UI;
 
 public class SimonSaysController : MonoBehaviour
 {
-    [SerializeField] List<SimonSaysButton> buttons;
-    // Start is called before the first frame update
-    int currentIteration;
-    int currentRound;
-    int[] Sequence = {0,1,2,3};
-    bool idleState = true;
+    [Header("Interaction")]
     public UnityEvent OnUnlock = new UnityEvent();
+    [Header("Indicator")]
     [SerializeField] ButtonDisplay buttonDisplay;
     [SerializeField] int totalSequences = 4;
+    [SerializeField] List<SimonSaysButton> buttons;
+    private int currentIteration;
+    private int currentRound;
+    private int[] Sequence = {0,1,2,3};
+    private bool idleState = true;
     void Awake()
     {
         for(int i = 0; i < buttons.Count; i++)
@@ -22,11 +23,6 @@ public class SimonSaysController : MonoBehaviour
             buttons[i].SetReturnValue(i, this);
         }
         StartCoroutine(IdleCoroutine());
-    }
-
-    void Update()
-    {
-        
     }
     public void PuzzleReset()
     {

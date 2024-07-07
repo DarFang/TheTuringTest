@@ -17,6 +17,8 @@ public class CutSceneManager : MonoBehaviour
             break;
             case CutsceneStartType.OnLevelFinish:GameManager.Singleton.OnLevelEnds.AddListener(StartEndScene);
             break;
+            case CutsceneStartType.OnDeath:GameManager.Singleton.OnPlayerDied.AddListener(StartDeathScene);
+            break;
             default:
             break;
         }
@@ -41,8 +43,13 @@ public class CutSceneManager : MonoBehaviour
     {
         GameManager.Singleton.OnLevelEnds.RemoveListener(StartEndScene);
     }
+    public void StartDeathScene()
+    {
+        Debug.Log("play death");
+        director.Play();
+    }
 }
 public enum CutsceneStartType
 {
-    OnLevelStart, OnLevelFinish
+    OnLevelStart, OnLevelFinish, OnDeath
 }

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PuzzleRoom : MonoBehaviour
 {
-    float timer;
     [SerializeField] private bool isCompleted;
     [SerializeField] private bool isCurrentPuzzle;
     [SerializeField] private int voiceIndex = 0;
+    float timer;
     private void OnTriggerEnter(Collider other) 
     {
         isCurrentPuzzle = true;
@@ -16,7 +16,7 @@ public class PuzzleRoom : MonoBehaviour
     {
         if(isCompleted && isCurrentPuzzle)
         {
-            //we can destroy stuff
+            
         }
         isCurrentPuzzle = false;
     }

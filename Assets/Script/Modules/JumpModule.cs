@@ -6,7 +6,6 @@ public class JumpModule : MonoBehaviour
 {
     public const float gravityAcceleration = -9.81f;
     private Vector3 velocity;
-
     [SerializeField] private CharacterController controller;
     [SerializeField] private float jumpForce;
     [SerializeField] private LayerMask floorLayer;

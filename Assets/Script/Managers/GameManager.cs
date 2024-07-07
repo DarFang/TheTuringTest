@@ -29,8 +29,6 @@ public class GameManager : MonoBehaviour
     public void StartLevel()
     {
         player = FindObjectOfType<InputController>();
-        //start cutscene
-        // start countdown
         OnLevelStart?.Invoke();
     }
     public void FinishLevel()

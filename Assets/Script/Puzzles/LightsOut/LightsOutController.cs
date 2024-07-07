@@ -5,13 +5,15 @@ using UnityEngine.Events;
 
 public class LightsOutController : MonoBehaviour
 {
+    [Header("Interaction")]
+    public UnityEvent OnUnlock = new UnityEvent();
+    [Header("Button Settings")]
     [SerializeField] Vector2Int size;
     [SerializeField] float offSet = .1f;
     [SerializeField] Transform StartPosition;
     [SerializeField] LightsOutButton lightsOutButton;
     Dictionary<Vector2Int, LightsOutButton> buttons = new Dictionary<Vector2Int, LightsOutButton>();
     Vector2Int[] AdjacentTiles = {Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right}; 
-    public UnityEvent OnUnlock = new UnityEvent();
     [SerializeField] ButtonDisplay buttonDisplay;
     void Start()
     {

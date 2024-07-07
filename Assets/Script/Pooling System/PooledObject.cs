@@ -9,7 +9,6 @@ public class PooledObject : MonoBehaviour
     {
         poolOwner = owner;
     }
-
     public void ResetBackToPool()
     {
         rb.velocity = Vector3.zero;

@@ -31,7 +31,6 @@ public class DoorIndicator : MonoBehaviour, IInteractable
         if(!isUnlocked) return;
         objectRenderer.material.color = originalUnlockColor;
     }
-
     public void OnInteract(InteractModule module)
     {
         if(!isUnlocked) return;
@@ -42,5 +41,4 @@ public class DoorIndicator : MonoBehaviour, IInteractable
         isUnlocked = true;
         objectRenderer.material.color = originalUnlockColor;    
     }
-
 }

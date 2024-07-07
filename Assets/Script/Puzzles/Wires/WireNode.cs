@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class WireNode : MonoBehaviour, IInteractable
 {
-    WireController controller;
     public WireNode connectedTo {get; private set;} = null;
+    [Header("Indicator")]
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] Renderer renderer;
     [SerializeField] Vector3 offset = Vector3.zero;
+    WireController controller;
     public void OnHoverEnter()
     {
         

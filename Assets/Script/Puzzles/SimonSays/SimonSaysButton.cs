@@ -5,15 +5,17 @@ using UnityEngine.Events;
 
 public class SimonSaysButton : MonoBehaviour, IInteractable
 {
-    private int value;
-    SimonSaysController controller;
-    private Color defaultColor;
+    [Header("Interaction")]
     [SerializeField] private UnityEvent OnInteracted;
+    SimonSaysController controller;
+    [Header("Indicator")]
+    private Color defaultColor;
     [SerializeField] private Color highlightColor;
     private Renderer objectRenderer;
     [SerializeField] float lightUpDuration = 1f;
-    private bool canInteract = false;
     [SerializeField] float lightenAmount = 0.2f;
+    private bool canInteract = false;
+    private int value;
     private void Awake() 
     {
         objectRenderer = GetComponent<Renderer>();
