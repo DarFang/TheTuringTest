@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovementModule : MonoBehaviour
 {
     [SerializeField] private CharacterController controller;
-    [SerializeField] Camera camera;
+    [SerializeField] Camera cam;
     [SerializeField] private float movementSpeed;
     private Vector3 moveDirection;
     private Vector2 aimDirection;
@@ -26,7 +26,7 @@ public class MovementModule : MonoBehaviour
 
         // Rotate player up down
         aimDirection.y = Mathf.Clamp(aimDirection.y, -85f, 85f);
-        camera.transform.localEulerAngles = new Vector3(aimDirection.y, 0, 0);
+        cam.transform.localEulerAngles = new Vector3(aimDirection.y, 0, 0);
         //Rotate player on left right
         transform.Rotate(Vector3.up, aimDirection.x * Time.deltaTime);
     }

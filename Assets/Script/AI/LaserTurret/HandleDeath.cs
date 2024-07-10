@@ -6,7 +6,11 @@ public class HandleDeath : MonoBehaviour
 {
     [SerializeField] GameObject playerInput;
     [SerializeField] GameObject timeline;
-    [SerializeField] Transform respawnPoint;
+    Respawn respawn;
+    private void Start() 
+    {
+        respawn = FindObjectOfType<Respawn>();
+    }
     public void OnDeath()
     {
         timeline.transform.parent = null;
@@ -15,6 +19,7 @@ public class HandleDeath : MonoBehaviour
     }
     public void Respawn()
     {
+        Transform respawnPoint = respawn.GetRespawn();
         playerInput.transform.position = respawnPoint.position;
         playerInput.transform.rotation = respawnPoint.rotation;
         playerInput.gameObject.SetActive(true);

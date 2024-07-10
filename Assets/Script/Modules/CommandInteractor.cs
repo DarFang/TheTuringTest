@@ -8,7 +8,7 @@ public class CommandInteractor : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
     [Header("Interactions")]
-    [SerializeField] Camera camera;
+    [SerializeField] Camera cam;
     [SerializeField] LayerMask clickableLayer;
     [SerializeField] private Queue<Command> commands = new Queue<Command>(); 
     private Command currentCommand;
@@ -35,7 +35,7 @@ public class CommandInteractor : MonoBehaviour
     }
     public void CreateCommand()
     {
-        Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width/2,Screen.height/2,0));
+        Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width/2,Screen.height/2,0));
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit,5f, clickableLayer))
         {

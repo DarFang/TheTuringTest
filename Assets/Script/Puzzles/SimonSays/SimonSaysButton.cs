@@ -1,44 +1,23 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class SimonSaysButton : MonoBehaviour, IInteractable
+public class SimonSaysButton : PuzzleButton
 {
-    [Header("Interaction")]
-    [SerializeField] private UnityEvent OnInteracted;
     SimonSaysController controller;
-    [Header("Indicator")]
-    private Color defaultColor;
-    [SerializeField] private Color highlightColor;
-    private Renderer objectRenderer;
     [SerializeField] float lightUpDuration = 1f;
-    [SerializeField] float lightenAmount = 0.2f;
-    private bool canInteract = false;
     private int value;
-    private void Awake() 
+
+    protected override void Awake()
     {
-        objectRenderer = GetComponent<Renderer>();
-        defaultColor = objectRenderer.material.color; 
+        base.Awake();
         LightUpColor();
     }
-    public void OnHoverEnter()
-    {
-        objectRenderer.material.color += new Color(1,1,1)*lightenAmount;
-        defaultColor += new Color(1,1,1)*lightenAmount;
-        highlightColor += new Color(1,1,1)*lightenAmount;
-    }
 
-    public void OnHoverExit()
+    public override void OnInteract(InteractModule module)
     {
-        objectRenderer.material.color -= new Color(1,1,1)*lightenAmount;
-        defaultColor -= new Color(1,1,1)*lightenAmount;
-        highlightColor -= new Color(1,1,1)*lightenAmount;
-    }
+        base.OnInteract(module);
 
-    public void OnInteract(InteractModule module)
-    {
-        if(!canInteract) return;
+        if (!canInteract) return;
         controller.OnButtonPressed(value);
         ButtonBlink();
     }
@@ -48,32 +27,22 @@ public class SimonSaysButton : MonoBehaviour, IInteractable
         this.controller = controller;
         this.value = value;
     }
-    public void Disable()
-    {
-        canInteract = false;
-    }
-    public void Enable()
-    {
-        canInteract = true;
-    }
-    public void ButtonBlink()
-    {
-        StartCoroutine(BlinkButtonCoroutine());
-    }
-    private IEnumerator BlinkButtonCoroutine()
-    {
-        SoundManager.Instance.PlayMusicKey(transform.position + new Vector3(0,0,2f), value);
-        LightUpColor();
-        yield return new WaitForSeconds(lightUpDuration);
-        UnlightUpColor();
-    }
-    public void LightUpColor ()
+
+    public void LightUpColor()
     {
         objectRenderer.material.color = highlightColor;
     }
+
     public void UnlightUpColor()
     {
         objectRenderer.material.color = defaultColor;
     }
 
+    protected override IEnumerator BlinkButtonCoroutine()
+    {
+        SoundManager.Instance.PlayMusicKey(transform.position + new Vector3(0, 0, 2f), value);
+        LightUpColor();
+        yield return new WaitForSeconds(lightUpDuration);
+        UnlightUpColor();
+    }
 }

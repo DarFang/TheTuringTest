@@ -14,7 +14,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private float speed = 2f; 
     [SerializeField] private float MouseSensitivity = 50f;
     [SerializeField] Vector3 velocity;
-    [SerializeField] Camera camera;
+    [SerializeField] Camera cam;
     CharacterController controller;
     private Vector2 aimDirection; 
     private Vector2 moveDirection;
@@ -69,7 +69,7 @@ public class PlayerInput : MonoBehaviour
         aimDirection.y += -Input.GetAxisRaw("Mouse Y") * Time.deltaTime * MouseSensitivity;
         // Rotate player up down
         aimDirection.y = Mathf.Clamp(aimDirection.y, -85f, 85f);
-        camera.transform.localEulerAngles = new Vector3(aimDirection.y, 0, 0);
+        cam.transform.localEulerAngles = new Vector3(aimDirection.y, 0, 0);
         //Rotate player on left right
         transform.Rotate(Vector3.up, aimDirection.x * Time.deltaTime * MouseSensitivity);
     }

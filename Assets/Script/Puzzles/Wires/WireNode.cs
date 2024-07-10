@@ -8,7 +8,7 @@ public class WireNode : MonoBehaviour, IInteractable
     public WireNode connectedTo {get; private set;} = null;
     [Header("Indicator")]
     [SerializeField] LineRenderer lineRenderer;
-    [SerializeField] Renderer renderer;
+    [SerializeField] Renderer render;
     [SerializeField] Vector3 offset = Vector3.zero;
     WireController controller;
     public void OnHoverEnter()
@@ -66,7 +66,7 @@ public class WireNode : MonoBehaviour, IInteractable
     }
     public void ChangeColor(Color color)
     {
-        renderer.material.color = color;
+        render.material.color = color;
         lineRenderer.startColor = color;
         lineRenderer.endColor = color;
     }

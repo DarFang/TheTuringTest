@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 20407554}
   - component: {fileID: 20407553}
   - component: {fileID: 20407552}
+  - component: {fileID: 20407555}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -131,6 +132,14 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!81 &20407555
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20407550}
+  m_Enabled: 1
 --- !u!1 &310292720
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,7 +597,7 @@ GameObject:
   - component: {fileID: 346218275}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -658,7 +667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c07c52a91f6fc8745a741546ee22928a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
+  cam: {fileID: 1972004469347186798}
   mouseSensitivity: 60
   shootingModule: {fileID: 0}
   movementModule: {fileID: 2103804264}
@@ -681,7 +690,7 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 64
-  camera: {fileID: 1972004469347186798}
+  cam: {fileID: 1972004469347186798}
 --- !u!114 &2103804264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,7 +704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1972004469787072143}
-  camera: {fileID: 1972004469347186798}
+  cam: {fileID: 1972004469347186798}
   movementSpeed: 5
 --- !u!114 &2103804265
 MonoBehaviour:
@@ -755,7 +764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  camera: {fileID: 1972004469347186798}
+  cam: {fileID: 1972004469347186798}
   clickableLayer:
     serializedVersion: 2
     m_Bits: 1
@@ -771,7 +780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a3d250d17a6cd47a1864d58148ede6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 1972004469347186798}
+  cam: {fileID: 1972004469347186798}
   seeingLayer:
     serializedVersion: 2
     m_Bits: 65

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
         if(Singleton == null)
         {
             Singleton = this;
+            transform.parent = null;
             DontDestroyOnLoad(gameObject);
         }
         else

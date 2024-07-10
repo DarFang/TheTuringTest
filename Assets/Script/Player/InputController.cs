@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-    [SerializeField] private Camera camera;
+    [SerializeField] private Camera cam;
     [SerializeField] private float mouseSensitivity = 50f;
     [Header("Modules")]
     [SerializeField] private ShootingModule shootingModule;

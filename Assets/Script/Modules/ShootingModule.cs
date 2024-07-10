@@ -8,14 +8,14 @@ public class ShootingModule : MonoBehaviour
     [Header("Shooting")]
     [SerializeField] private Rigidbody projectile;
     [SerializeField] private Transform shootingPoint;
-    [SerializeField] Camera camera;
+    [SerializeField] Camera cam;
     public void Shoot()
     {
         PooledObject tempPooled = objectPool.RetriveAvailableItem();
         Rigidbody bulletInstantiated = tempPooled.rb;//Instantiate(projectile, shootingPoint.position, shootingPoint.rotation);
         bulletInstantiated.position = shootingPoint.position;
         bulletInstantiated.rotation = shootingPoint.rotation;
-        bulletInstantiated.AddForce(1f*camera.transform.forward, ForceMode.Impulse);
+        bulletInstantiated.AddForce(1f*cam.transform.forward, ForceMode.Impulse);
         tempPooled.ResetBackToPool(5f);
     }
 }
