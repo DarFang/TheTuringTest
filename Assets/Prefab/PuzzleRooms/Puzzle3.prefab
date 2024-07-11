@@ -35,7 +35,7 @@ PrefabInstance:
     - target: {fileID: 3128866616253884326, guid: 87f0443fa6a516745940fbf4b6fa39e5,
         type: 3}
       propertyPath: m_Name
-      value: ROOM 3
+      value: Puzzle3
       objectReference: {fileID: 0}
     - target: {fileID: 3128866616253884327, guid: 87f0443fa6a516745940fbf4b6fa39e5,
         type: 3}

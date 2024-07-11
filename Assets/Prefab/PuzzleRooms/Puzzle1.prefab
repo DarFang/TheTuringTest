@@ -473,7 +473,7 @@ PrefabInstance:
     - target: {fileID: 6464720313456828904, guid: 7bcbfb8126c6d8342874a6e767f95dff,
         type: 3}
       propertyPath: m_Name
-      value: ROOM 1
+      value: Puzzle1
       objectReference: {fileID: 0}
     - target: {fileID: 6464720313456828904, guid: 7bcbfb8126c6d8342874a6e767f95dff,
         type: 3}
