@@ -235,59 +235,6 @@ LODGroup:
     - renderer: {fileID: 5671991651403149824}
     - renderer: {fileID: 5671991650866035811}
   m_Enabled: 1
---- !u!1 &4126527070937609445
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4086280428327715968}
-  - component: {fileID: 5008351700544125648}
-  m_Layer: 0
-  m_Name: LOD room2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4086280428327715968
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4126527070937609445}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5671991649572133695}
-  m_Father: {fileID: 5671991650769937979}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!205 &5008351700544125648
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4126527070937609445}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: -12.57, y: -1.8499999, z: -0.7000005}
-  m_Size: 1.000001
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.37948668
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 5671991649572133693}
-    - renderer: {fileID: 5671991649797673485}
-  m_Enabled: 1
 --- !u!1 &5091073345720773000
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,8 +886,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5671991649797673484}
-  m_Father: {fileID: 4086280428327715968}
-  m_RootOrder: 0
+  m_Father: {fileID: 5671991650769937979}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5671991649572133694
 MeshFilter:
@@ -3688,7 +3635,7 @@ Transform:
   m_Children:
   - {fileID: 5671991650389476477}
   - {fileID: 5671991649920508057}
-  - {fileID: 4086280428327715968}
+  - {fileID: 5671991649572133695}
   - {fileID: 5671991649772124994}
   m_Father: {fileID: 5671991651122473705}
   m_RootOrder: 16

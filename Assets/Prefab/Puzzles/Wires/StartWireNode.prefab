@@ -210,5 +210,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 423055478415278229}
   render: {fileID: 423055478415278230}
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 0, z: 0.05}
   color: {r: 1, g: 0, b: 0, a: 1}

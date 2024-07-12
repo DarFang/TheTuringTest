@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class LightsOutController : MonoBehaviour
+public class LightsOutController : PuzzlePiece
 {
-    [Header("Interaction")]
-    public UnityEvent OnUnlock = new UnityEvent();
+
     [Header("Button Settings")]
     [SerializeField] Vector2Int size;
     [SerializeField] float offSet = .1f;
@@ -14,7 +13,6 @@ public class LightsOutController : MonoBehaviour
     [SerializeField] LightsOutButton lightsOutButton;
     Dictionary<Vector2Int, LightsOutButton> buttons = new Dictionary<Vector2Int, LightsOutButton>();
     Vector2Int[] AdjacentTiles = {Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right}; 
-    [SerializeField] ButtonDisplay buttonDisplay;
     void Start()
     {
         for (int x = 0; x < size.x; x++)
@@ -28,7 +26,7 @@ public class LightsOutController : MonoBehaviour
                 buttons.Add(pos, buttonInstance);
             }
         }
-        RandomiseLightupButtons();
+        PuzzleReset();
         buttonDisplay?.ChangeColor(Color.red);
         buttonDisplay?.ChangeText("Locked");
     }
@@ -36,8 +34,9 @@ public class LightsOutController : MonoBehaviour
     {
         
     }
-    public void RandomiseLightupButtons()
+    public override void PuzzleReset()
     {
+        // Randomise buttons
         foreach (KeyValuePair<Vector2Int, LightsOutButton> button in buttons)
         {
             button.Value.SetButtonValue(Random.Range(0, 2) == 0);
@@ -61,9 +60,7 @@ public class LightsOutController : MonoBehaviour
         {
             if(button.Value.Value == true) return false;
         }
-        OnUnlock?.Invoke();
-        buttonDisplay?.ChangeText("Unlocked");
-        buttonDisplay?.ChangeColor(Color.green);
+        UnlockPuzzle();
         return true;
     }
 }

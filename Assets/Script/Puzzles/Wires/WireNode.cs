@@ -59,8 +59,11 @@ public class WireNode : MonoBehaviour, IInteractable
     }
     public void Disconnect()
     {
-        connectedTo.connectedTo = null;
-        connectedTo.DisconnectLineRenderer();
+        if(connectedTo != null)
+        {
+            connectedTo.connectedTo = null;
+            connectedTo.DisconnectLineRenderer();
+        }
         connectedTo = null;
         DisconnectLineRenderer();
     }

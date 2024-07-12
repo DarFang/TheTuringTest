@@ -4,13 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class WireController : MonoBehaviour
+public class WireController : PuzzlePiece
 {
-    [Header("Interactions")]
-    public UnityEvent OnUnlock = new UnityEvent();
+    [Header("Indicator")]
     [SerializeField] List<EndWireNode> endWires= new List<EndWireNode>();
     [SerializeField] List<StartWireNode> startWires= new List<StartWireNode>();
-    [SerializeField] ButtonDisplay buttonDisplay;
     List<WireNode> correctWireSequence = new List<WireNode>();
     WireNode currentWireNode = null;
     SeeingModule module;
@@ -18,7 +16,7 @@ public class WireController : MonoBehaviour
     void Start()
     {
         Initialise();
-        RandomizeWires();
+        PuzzleReset();
 
     }
 
@@ -34,8 +32,9 @@ public class WireController : MonoBehaviour
         }
     }
 
-    public void RandomizeWires()
+    public override void PuzzleReset()
     {
+        // Randomize Wires
         correctWireSequence = new List<WireNode>();
         List<WireNode> tempEndWires = new List<WireNode>(endWires);
         while(tempEndWires.Count > 0)
@@ -47,6 +46,7 @@ public class WireController : MonoBehaviour
         for (int i = 0; i < correctWireSequence.Count; i++)
         {
             correctWireSequence[i].ChangeColor(startWires[i].color);
+            correctWireSequence[i].Disconnect();
         }  
     }
 
@@ -66,9 +66,7 @@ public class WireController : MonoBehaviour
                 return false;
             }
         }
-        buttonDisplay?.ChangeText("Unlocked");
-        buttonDisplay?.ChangeColor(Color.green);
-        OnUnlock?.Invoke();
+        UnlockPuzzle();
         return true;
     }
     public void OnWireInteract(WireNode selectedWireNode, SeeingModule module)

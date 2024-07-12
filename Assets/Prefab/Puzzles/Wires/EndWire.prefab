@@ -212,4 +212,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 4044814583224375249}
   render: {fileID: 4044814583224375278}
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 0, z: 0.05}

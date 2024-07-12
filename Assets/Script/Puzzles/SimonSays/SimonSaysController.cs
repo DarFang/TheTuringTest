@@ -4,12 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class SimonSaysController : MonoBehaviour
+public class SimonSaysController : PuzzlePiece
 {
-    [Header("Interaction")]
-    public UnityEvent OnUnlock = new UnityEvent();
     [Header("Indicator")]
-    [SerializeField] ButtonDisplay buttonDisplay;
     [SerializeField] int totalSequences = 4;
     [SerializeField] List<SimonSaysButton> buttons;
     private int currentIteration;
@@ -24,7 +21,7 @@ public class SimonSaysController : MonoBehaviour
         }
         StartCoroutine(IdleCoroutine());
     }
-    public void PuzzleReset()
+    public override void PuzzleReset()
     {
         idleState = false;
         currentIteration = 0;
@@ -57,9 +54,7 @@ public class SimonSaysController : MonoBehaviour
                     LightUpAllButtons();
                     idleState = true;
                     StartCoroutine(IdleCoroutine());
-                    buttonDisplay?.ChangeText("Unlocked");
-                    buttonDisplay?.ChangeColor(Color.green);
-                    OnUnlock?.Invoke();
+                    UnlockPuzzle();
                 }
                 else
                 {
