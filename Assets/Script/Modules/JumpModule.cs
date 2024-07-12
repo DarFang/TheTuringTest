@@ -20,7 +20,7 @@ public class JumpModule : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics.CheckSphere(transform.position, 0.25f, floorLayer);
+        return Physics.CheckSphere(transform.position, 0.09f, floorLayer);
     }
 
     private void ApplyGravity()

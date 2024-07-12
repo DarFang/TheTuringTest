@@ -9,6 +9,7 @@ public class MovingBlock : MonoBehaviour
     [SerializeField] Vector3 movementVector;
     [SerializeField] [Range(0,1)] float movementFactor;
     [SerializeField] float period = 2f;
+    [SerializeField] float startTime = 0f;
     private void Start() {
         startingPosition = transform.position;
     }
@@ -16,7 +17,7 @@ public class MovingBlock : MonoBehaviour
         if(period <= Mathf.Epsilon){return;}
         const float tau = Mathf.PI * 2;
         float cycles = Time.time/period;
-        float rawSinWav = Mathf.Sin(tau*cycles) ;
+        float rawSinWav = Mathf.Sin(tau*cycles + startTime) ;
         movementFactor = (rawSinWav + 1f)/2;
 
         Vector3 offset = movementVector*movementFactor;
